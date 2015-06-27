@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: [
-		'webpack-dev-server/client?http://localhost:8080',
+		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/dev-server',
 		'./src/scripts/main',
 		'./stylesheets/main'
@@ -28,9 +28,18 @@ module.exports = {
 	},
   	module: {
 		loaders: [
-			{ test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'], exclude: /node_modules/ },
-			{ test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
-			{ test: /\.css/, loader: "style-loader!css-loader" }
+			{ 
+				test: /\.jsx?$/,
+				loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'],
+				exclude: /node_modules/
+			},
+			{
+				test: /\.less$/,
+				loader: 'style-loader!css-loader!less-loader'
+			},
+			{
+				test: /\.css/, loader: "style-loader!css-loader"
+			}
 		]
 	}
 };
