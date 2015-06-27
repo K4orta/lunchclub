@@ -5,7 +5,7 @@ import Layout from './layout';
 export default class App extends React.Component {
   render() {
     return (
-      <Layout {..this.props}>
+      <Layout {...this.props}>
         <RouteHandler {...this.props} />
       </Layout>
     );
