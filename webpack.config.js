@@ -3,6 +3,8 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var buildPath = path.resolve(__dirname, 'dist');
+
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: [
@@ -28,7 +30,7 @@ module.exports = {
 	},
   	module: {
 		loaders: [
-			{ 
+			{
 				test: /\.jsx?$/,
 				loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'],
 				exclude: /node_modules/

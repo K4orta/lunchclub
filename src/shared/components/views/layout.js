@@ -6,6 +6,7 @@ export default class Layout extends React.Component {
       <html>
         <head>
           <title>Lunch Club!</title>
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
         </head>
         <body>
           {this.props.children}
