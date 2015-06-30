@@ -13,9 +13,10 @@ app.set('views', __dirname + '/src/shared/components/views');
 app.set('view engine', 'jsx');
 app.set('view', renderer.expressView);
 
-app.get('/', (req, res)=> {
-  res.render(req.url, {});
-});
+let serveApp = (req, res)=> {res.render(req.url, {});};
+
+app.get('/', serveApp);
+app.get('/login', serveApp);
 
 var server = app.listen(3000, function() {
 

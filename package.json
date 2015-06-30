@@ -24,6 +24,8 @@
     "alt": "^0.16.10",
     "express": "^4.12.4",
     "node-jsx": "^0.13.3",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.0.0",
     "react": "^0.13.3",
     "react-engine": "^1.7.0",
     "react-router": "^0.13.3"
