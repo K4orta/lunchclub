@@ -1,5 +1,8 @@
-export default class UserActions {
-  constructor() {
-    this.generateActions('loginSuccess');
-  }
-};
+export function addUser(name) {
+  return {
+    type: 'ADD_USER',
+    user: {
+      'name': name
+    }
+  };
+}

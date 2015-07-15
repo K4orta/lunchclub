@@ -8,14 +8,12 @@ var buildPath = path.resolve(__dirname, 'dist');
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: [
-		'webpack-dev-server/client?http://localhost:3000',
-		'webpack/hot/dev-server',
-		'./src/scripts/main',
+		'./src/client/main',
 		'./stylesheets/main'
 	],
 	output: {
-		path: './dist/',
-		filename: 'main.js',
+		path: __dirname + '/dist/',
+		filename: 'bundle.js',
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -26,13 +24,13 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['', '.js', '.less']
+		extensions: ['', '.js', '.less', 'json']
 	},
-  	module: {
+	module: {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				loaders: ['react-hot', 'babel-loader?stage=0&optional=runtime'],
+				loaders: ['react-hot', 'babel?stage=0&optional[]=runtime&cacheDirectory'],
 				exclude: /node_modules/
 			},
 			{
@@ -41,7 +39,11 @@ module.exports = {
 			},
 			{
 				test: /\.css/, loader: "style-loader!css-loader"
-			}
+			},
+			{
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
 		]
 	}
 };

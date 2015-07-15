@@ -1,25 +1,27 @@
 import express from 'express';
-import renderer from 'react-engine';
+import engine from 'express-handlebars';
 import path from 'path';
 
 let app = express();
 // require('node-jsx').install();
-let engine = renderer.server.create({
-  reactRoutes: __dirname + '/src/shared/routes'
-});
 
-app.engine('.jsx', engine);
-app.set('views', __dirname + '/src/shared/components/views');
-app.set('view engine', 'jsx');
-app.set('view', renderer.expressView);
 
-let serveApp = (req, res)=> {res.render(req.url, {});};
+app.engine('hbs', engine());
+app.set('views', __dirname + '/src/server/views');
+app.set('view engine', 'hbs');
+
+let serveApp = (req, res)=> {
+  res.render('layout', {
+    app: "Oi!"
+  });
+};
 
 app.get('/', serveApp);
 app.get('/login', serveApp);
 
-var server = app.listen(3000, function() {
+app.use(express.static('dist'));
 
+var server = app.listen(3000, function() {
   var host = server.address().address;
   var port = server.address().port;
 

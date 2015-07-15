@@ -13,7 +13,7 @@ export default class Form extends React.Component {
         <div id="fb-root"></div>
         <legend>Login</legend>
         <label>I dont want to hash or store your weak password, so:</label>
-        <div className='fb-login-button' data-max-rows='1' data-size='medium' data-show-faces='false' data-auto-logout-link='false'>Login</div>
+        <button>Login</button>
       </form>
     );
   }
