@@ -7,7 +7,12 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider redux={redux}>
-        {() => <RouteHandler {...this.props} />}
+        {() => {
+            return (
+              <RouteHandler {...this.props} />
+            );
+          }
+        }
       </Provider>
     );
   }

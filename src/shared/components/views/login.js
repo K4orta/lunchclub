@@ -15,19 +15,20 @@ export default class LoginView extends React.Component {
     let URLProps = {
       'access_type': 'online',
       'client_id': 1462304104083689,
-      'redirect_uri': 'http://localhost:8001/auth',
+      'redirect_uri': 'http://localhost:3000/api/auth',
       'response_type': 'code',
       'scope': 'public_profile+email',
       'state': 'state'
     };
-    let encodedProps = qs.stringify(URLProps);
+    let encodedProps = qs.stringify(URLProps, null, null);
+        encodedProps = encodedProps.replace('%2B', '+');
     let uri = `https://www.facebook.com/dialog/oauth?${encodedProps}`;
 
     let {users, dispatch} = this.props;
     return (
       <div className='view-content'>
         <h1>Login</h1>
-        <a href={uri} className='btn' >Login Facebook</a>
+        <a href={uri} className='btn' >Login with Facebook</a>
         <AddUser users={users} {...bindActionCreators(UserActions, dispatch)} />
       </div>
     );

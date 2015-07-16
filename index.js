@@ -1,10 +1,11 @@
 import express from 'express';
 import engine from 'express-handlebars';
 import path from 'path';
+import httpProxy from 'http-proxy';
 
 let app = express();
 // require('node-jsx').install();
-
+let proxy = httpProxy.createProxyServer();
 
 app.engine('hbs', engine());
 app.set('views', __dirname + '/src/server/views');
@@ -18,6 +19,12 @@ let serveApp = (req, res)=> {
 
 app.get('/', serveApp);
 app.get('/login', serveApp);
+app.all('/api/*', (req, res)=> {
+  req.url = req.url.replace('/api', '');
+  proxy.web(req, res, {
+    target: 'http://localhost:8001'
+  });
+});
 
 app.use(express.static('dist'));
 
