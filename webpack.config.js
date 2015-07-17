@@ -8,6 +8,8 @@ var buildPath = path.resolve(__dirname, 'dist');
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: [
+		'webpack/hot/dev-server',
+		'webpack-dev-server/client?http://localhost:8080',
 		'./src/client/main',
 		'./stylesheets/main'
 	],

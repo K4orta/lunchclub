@@ -17,8 +17,6 @@ let serveApp = (req, res)=> {
   });
 };
 
-app.get('/', serveApp);
-app.get('/login', serveApp);
 app.all('/api/*', (req, res)=> {
   req.url = req.url.replace('/api', '');
   proxy.web(req, res, {
@@ -27,6 +25,7 @@ app.all('/api/*', (req, res)=> {
 });
 
 app.use(express.static('dist'));
+app.get('/*', serveApp);
 
 var server = app.listen(3000, function() {
   var host = server.address().address;
